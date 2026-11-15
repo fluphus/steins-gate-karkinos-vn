@@ -1,0 +1,10 @@
+/* Optional 2D portrait drift; base layout transforms and every UI layer stay intact. */
+#game #character[data-portrait-motion="active"] {
+  translate: var(--portrait-offset-x, 0px) var(--portrait-offset-y, 0px);
+  rotate: var(--portrait-lean, 0deg);
+  transform-origin: 50% 86%;
+  will-change: translate, rotate;
+}
+@media (prefers-reduced-motion: reduce) {
+  #game #character[data-portrait-motion="active"] { translate: none; rotate: none; }
+}

@@ -1,0 +1,85 @@
+/* Source stage screens use the original portrait artwork, contained on desktop. */
+#game.original-call #stage-art,
+#game.original-mall #stage-art {
+  inset: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+}
+#game.original-call #stage-art { z-index: 18; background: #000; }
+#game.original-mall #stage-art { z-index: 3; background: #000; }
+#game.original-search #action-button {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  transform: none;
+  background: #000;
+  z-index: 18;
+}
+#game.original-search #action-image { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: contain; }
+#game.original-search #action-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+/* The preserved wipe frame is at the upper right in the original UI declarations. */
+#game #wipe { left: auto; right: .8%; top: .75%; width: 32%; height: 28.64%; }
+#game.original-white { background: #fff; }
+#game.original-white #scene-backdrop { background: #fff !important; opacity: 1; }
+#game.original-white #scan-grid { opacity: 0; }
+#game #branches.original-choice-card { background-repeat: no-repeat; background-size: 100% 100%; padding: 24px; }
+/* The source fades only its AR/canvas layers; the game container stays opaque. */
+#game[data-scene="fryi3j5"].fade-white,
+#game[data-scene="fryi3j5"].fade-black { animation: none; opacity: 1; filter: none; }
+#game.original-memory-white,
+#game.original-memory-return { background: white; }
+#game.original-memory-white #scene-backdrop,
+#game.original-memory-white #character,
+#game.original-memory-white #scan-grid { animation: original-memory-out 4s linear 30ms forwards; }
+#game.original-memory-return #scene-backdrop,
+#game.original-memory-return #character,
+#game.original-memory-return #scan-grid { animation: original-memory-in 4s linear forwards; }
+@keyframes original-memory-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes original-memory-in { from { opacity: 0; } to { opacity: 1; } }
+#game.original-memory-black { background: #000; }
+/* Original canvas: blur towards 10px for 3s, then return over the next 3s. */
+#game.original-blur #scene-backdrop,
+#game.original-blur #character { animation: original-world-blur 6s ease-in-out both; }
+@keyframes original-world-blur { 0%,100% { filter: blur(0); } 50% { filter: blur(10px); } }
+/* Exact source fadeInAfterHalf keyframes: the video appears at 70% of 15s. */
+#game.original-credits { background: #f6f6f6; animation: original-end-background 15s linear forwards; }
+#game.original-credits #scene-video { background: transparent; animation: original-endroll-reveal 15s ease-in-out forwards; }
+@keyframes original-endroll-reveal { 0%,50%,69% { opacity: 0; } 70%,100% { opacity: 1; } }
+@keyframes original-end-background { 0%,99.99% { background-color: #f6f6f6; } 100% { background-color: #000; } }
+#game.original-credits #character,
+#game.original-credits #scene-backdrop,
+#game.original-credits #scan-grid,
+#game.original-credits #original-switch-prop { animation: original-stage-disappear 5s linear 5s forwards; }
+#game.original-credits #character { --original-start-opacity: .3; }
+#game.original-credits #dialogue-wrap { animation: original-dialogue-disappear 5s steps(1,end) forwards; }
+@keyframes original-stage-disappear { from { opacity: var(--original-start-opacity,1); } to { opacity: 0; } }
+@keyframes original-dialogue-disappear { 0%,99.99% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+#original-switch-prop { position: absolute; z-index: 4; left: 50%; bottom: 155px; transform: translateX(-50%); width: min(48%,380px); max-height: 42%; object-fit: contain; pointer-events: none; }
+#original-trial-intro { position: absolute; inset: 0; z-index: 80; background: #000b; display: grid; place-items: center; }
+#original-trial-intro .original-trial-picture { width: min(86.67%,600px); max-height: 55%; object-fit: contain; }
+#original-trial-close { position: absolute; padding: 0; border: 0; background: transparent; right: max(3.73%,calc((100% - 650px)/2)); top: 24%; width: min(12%,75px); aspect-ratio: 1; }
+#original-trial-close img { width: 100%; height: 100%; object-fit: contain; }
+/* Layered chapter-clear artwork; original share action is replaced by local navigation. */
+#end-panel.original-clear-panel { padding: 14px; gap: 10px; }
+#end-panel.original-clear-panel #end-content { max-height: 74%; overflow: auto; width: min(100%,380px); }
+#end-panel.original-clear-panel #end-content > img { display: none; }
+.original-clear-composition { position: relative; aspect-ratio: 375 / 545; width: 100%; overflow: hidden; isolation: isolate; }
+#end-content .original-clear-composition img { position: absolute; display: block; margin: 0; max-width: none; max-height: none; object-fit: fill; }
+.original-clear-composition [data-original-ui="clear_bg"] { z-index: 0; }
+.original-clear-composition [data-original-ui="clear"],
+.original-clear-composition [data-original-ui="clear_end"],
+.original-clear-composition [data-original-ui="clear_info"] { z-index: 1; }
+@media (max-height: 650px) {
+  #end-panel.original-clear-panel #end-content { width: min(48vh,100%); max-height: 65%; }
+  #end-panel.original-clear-panel { gap: 7px; }
+  #end-panel.original-clear-panel button { padding: 7px 14px; }
+}

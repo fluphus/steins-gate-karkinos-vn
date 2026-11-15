@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "sourceRoot": "steins_gate_karkinos_revival/research/cdn_recon_round5",
+  "sourceHandling": "Read-only inspection of preserved scene configs, inline_script_3 controllers, question JSON and GLB JSON/BIN. Original controllers, original storage keys and AR services are not executed or used. Source assets were not modified.",
+  "auditedScenes": ["zbwe9e4", "fjzef86", "kuf47ne", "fjalg332", "ppgn4ri", "pk95ywe", "5ey3se2", "fryi3j5", "r7xnwci", "74ngv74", "yddnar9", "82ezfsx", "bkucguk", "sad97sf", "b7f11f61526a7f98"],
+  "rules": {
+    "pair-memory": "Only exactly selected pairs 1+2, 3+4 or 5+6 combine, revealing original assets nazo2_2, nazo2_1 and nazo2_3. Selection resets after each combination. This is an optional clue tool; the original final password remains in the host.",
+    "delete-noise": "Original delete.glb node toggles; exact unordered character set ノイズ, followed by original question_2 password.",
+    "delete-howling": "Exact unordered character set ハウリング, followed by original question_4. The original ring can be freely dragged; the source defines no collision-based answer rule.",
+    "delete-okabe": "Exact unordered eight-character set オカベリンタロウ, followed by original question_2. Selecting only オカベ produces the original eight-character warning. Other wrong DELETE selections reset.",
+    "gear-memory": "Original gear image, lower half visible, eleven seconds per revolution, synchronized to original SE_suzu audio. The original decoded audio is 11.945556 seconds; playback resets at the eleven-second revolution. Answers use original question_5.",
+    "ex1": "Left target contains nodes 17,18,9,5; right target contains 1,13,10. Source checks inclusion, so extra nodes do not invalidate a half. Half results latch; incomplete attempts reset only current selection. Host inventory keys bkucguk:left and bkucguk:right restore progress and original clue images across reloads and into EX2.",
+    "ex2": "The original scene is a kanji password input. Original question data accepts 失敗. The input is not a replacement for another missing interaction.",
+    "ending-switch": "Original d_switch.glb touched event starts SwitchAction; source controller advances after two seconds. One component instance handles one of the three host-controlled touches. No generic correct-answer bypass is used.",
+    "marker-box": "Existing KarkinosBox preserves the original exact eleven-node set and 35 planar meshes. Original P11 completed crossword and official stroke-count derivation are available voluntarily through the local field guide. Wrong box attempts retain selection, as in the source."
+  },
+  "geometryAndImages": "model-geometry.json retains original plane vertices, indices, UVs, node transforms and names for delete.glb and bushu.glb. Their embedded off/on textures are copied byte-for-byte as delete-N.png and bushu-N.png. Canvas uses a local orthographic projection with depth ordering and original triangle hit areas. Accessible node selectors use the same state and rules.",
+  "switchRendering": {
+    "files": "switch-00.png through switch-19.png",
+    "size": [802, 555],
+    "frames": "20 transparent PNGs rendered from original SwitchAction at 0.0 through 1.9 seconds, 10 fps, with a common alpha crop; original full clip length is ten seconds.",
+    "renderer": "Local Three.js GLTFLoader/WebGLRenderer in Microsoft Edge. Original mesh, UV and PBR materials; source scene Y rotation -90 degrees. Fixed orthographic camera and studio lighting. No painted or synthesized model details.",
+    "limit": "The component displays the first two seconds before the host advances; the host may retain frame 00 as a static scene prop during dialogue. These PNGs do not claim matching original camera or AR illumination."
+  },
+  "restorationDifferences": [
+    "Camera and marker tracking are replaced by mouse/touch orbit controls and keyboard node selectors; geometric and logical source data remain in use.",
+    "Canvas rendering approximates material lighting and transparency; it is not the original PalanAR renderer.",
+    "Image enlargement, reset controls, pause/replay and voluntary staged hints are restoration additions. Original paper-dependent reasoning is linked to the locally restored official field guide; answer disclosure is explicit and optional.",
+    "Component errors show source feedback text and report source record IDs to host history. The host owns story transitions and correct-answer delays.",
+    "Only simulated touch input was tested on desktop Edge; no physical-phone or original AR-device equivalence claim is made."
+  ],
+  "validation": "Real DOM clicks cover pair matching, all three DELETE rounds with wrong/correct states, EX1 inclusion and retained halves, EX2 restored clue images, original audio decoding/mute, switch frames, cleanup and mobile overflow. Additional real Canvas mouse/touch hits, deselection, orbit and the eleven-second audio/gear wrap passed. Detailed development logs are in work/full-puzzles/validation.json and motion-validation.json; full-game integration is verified separately by the host."
+}

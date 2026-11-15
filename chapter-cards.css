@@ -1,0 +1,68 @@
+#chapter-title-card {
+  --chapter-angle: -12deg;
+  position: fixed; inset: 0; width: 100vw; height: 100dvh;
+  max-width: none; max-height: none; padding: 0; margin: 0;
+  border: 0; border-radius: 0; overflow: hidden; isolation: isolate;
+  background: #04122b; color: #f0fcff; box-shadow: none; cursor: pointer;
+}
+#chapter-title-card[data-chapter="3"] { --chapter-angle: 22deg; }
+#chapter-title-card::backdrop { background: #04122b; }
+#chapter-title-card .chapter-card-field {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(ellipse at 66% 45%, #10688155, transparent 55%),
+    linear-gradient(110deg, #071b30d9, #06204c55),
+    url("assets/ui/6468d02da855fd2d.png") center / cover;
+}
+#chapter-title-card .chapter-card-frame { position: absolute; inset: 3%; width: 94%; height: 94%; pointer-events: none; }
+.chapter-card-border { fill: none; stroke: #299dad; stroke-width: 1; opacity: .65; }
+.chapter-card-line { fill: none; stroke: #64d4dc; stroke-width: 1; opacity: .45; }
+.chapter-card-accent { fill: #e2c542; opacity: .9; }
+#chapter-title-card .chapter-card-logo {
+  position: absolute; top: 11%; left: 9%; width: clamp(220px, 26vw, 340px);
+  height: auto; opacity: .8;
+}
+#chapter-title-card .chapter-card-motif {
+  position: absolute; left: 70%; top: 53%; width: min(49vw, 600px); aspect-ratio: 1;
+  transform: translate(-50%, -50%) rotate(var(--chapter-angle));
+  animation: chapter-motif-arrive 520ms ease-out both;
+}
+#chapter-title-card .chapter-card-motif svg {
+  position: absolute; inset: -12%; width: 124%; height: 124%; fill: none;
+  stroke: #4db1d1; stroke-width: .8; opacity: .3;
+}
+#chapter-title-card .chapter-card-motif img { width: 100%; height: 100%; object-fit: contain; opacity: .64; }
+#chapter-title-card h1 {
+  position: absolute; left: 13%; top: 48%; margin: 0;
+  transform: translateY(-50%); text-align: left; white-space: nowrap;
+  color: #f0fcff; font: 500 clamp(38px, 5.2vw, 72px)/1.2 "Yu Mincho", "SimSun", serif;
+  letter-spacing: .12em; text-shadow: 0 2px 18px #1a74a17a;
+  animation: chapter-title-arrive 360ms ease-out both;
+}
+#chapter-title-card h1 span { display: inline-block; margin: 0 .12em; font: 400 1.8em/.9 Georgia, "Times New Roman", serif; }
+#chapter-title-card #chapter-card-skip {
+  position: absolute; width: 1px; height: 1px; min-width: 0; min-height: 0;
+  margin: -1px; padding: 0; border: 0; overflow: hidden; clip-path: inset(50%);
+  white-space: nowrap; background: transparent; outline: 0; pointer-events: none;
+}
+@keyframes chapter-motif-arrive {
+  from { opacity: 0; transform: translate(-50%, -48%) rotate(var(--chapter-angle)) scale(.97); }
+  to { opacity: 1; transform: translate(-50%, -50%) rotate(var(--chapter-angle)) scale(1); }
+}
+@keyframes chapter-title-arrive { from { opacity: 0; } to { opacity: 1; } }
+@media (max-aspect-ratio: 4/5) {
+  #chapter-title-card .chapter-card-logo { width: 63%; left: 18.5%; top: 10%; }
+  #chapter-title-card .chapter-card-motif { left: 50%; top: 42%; width: 82vw; }
+  #chapter-title-card h1 { top: 76%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(35px, 9vw, 56px); }
+}
+@media (max-height: 500px) and (min-aspect-ratio: 6/5) {
+  #chapter-title-card .chapter-card-logo { top: 8%; width: 220px; }
+  #chapter-title-card h1 { top: 60%; font-size: 38px; }
+  #chapter-title-card .chapter-card-motif { width: 44vw; max-width: 440px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #chapter-title-card .chapter-card-motif, #chapter-title-card h1 { animation: none; }
+}
+
+/* Prevent the initiating mobile tap highlight from floating above the modal. */
+#game #end-next { -webkit-tap-highlight-color: transparent; }

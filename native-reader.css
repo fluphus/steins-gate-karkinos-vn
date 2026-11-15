@@ -1,0 +1,389 @@
+/* The archived Karkinos artwork supplies the dialogue and nameplate shapes.
+   This layer deliberately changes only in-game reading and its modal menus. */
+#toolbar {
+  position: fixed;
+  top: calc(10px + env(safe-area-inset-top, 0px));
+  right: calc(10px + env(safe-area-inset-right, 0px));
+  left: auto;
+  display: block;
+  width: auto;
+  height: auto;
+  padding: 0;
+  color: #e3f7fa;
+  background: transparent;
+  border: 0;
+  pointer-events: none;
+}
+#toolbar button, #toolbar a {
+  color: #d7f0f4;
+  font-family: "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+}
+#toolbar #scene-title {
+  width: 100%; max-width: none; min-width: 0;
+  margin: 0; padding: 12px 0 0; border: 0;
+  color: #80baca; white-space: normal; overflow: visible;
+  font: 13px/1.6 "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+  letter-spacing: .04em;
+}
+#toolbar button:hover, #toolbar a:hover,
+#toolbar button:focus-visible, #toolbar a:focus-visible {
+  color: #fff;
+  background: #10425e;
+  outline: 1px solid #50c5d1;
+}
+#toolbar #skip-button[aria-pressed="true"],
+#toolbar #auto-button[aria-pressed="true"],
+#toolbar #reader-more-toggle[aria-expanded="true"] {
+  color: #efffff;
+  background: #166b82;
+  box-shadow: inset 0 -2px #45d7ce;
+}
+#toolbar #reader-more-tools { border-color: #287f9a; }
+
+/* A floating entry occupies no stage space; chapter information lives inside. */
+#toolbar #reader-more-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 72px; min-height: 44px; padding: 8px 16px;
+  background: #061c32e8; border: 1px solid #287f9a;
+  box-shadow: 0 4px 14px #0004; pointer-events: auto;
+}
+#toolbar #reader-more-tools {
+  position: absolute;
+  z-index: 110;
+  top: calc(100% + 8px);
+  right: 0;
+  display: none;
+  width: min(520px, calc(100vw - 20px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));
+  min-width: 0;
+  max-height: calc(100dvh - 82px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  padding: 20px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  scrollbar-color: #358fa1 #08283e;
+  color: #e4f5f7;
+  background: #061c30;
+  border: 1px solid #287f9a;
+  box-shadow: 0 14px 42px #0009;
+  pointer-events: auto;
+}
+#toolbar #reader-more-tools.is-open { display: block; }
+#toolbar #reader-more-tools > .reader-settings-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  width: 100%; padding: 0 0 14px; border: 0; border-bottom: 1px solid #285a70;
+}
+#toolbar #reader-settings-heading { margin: 0; font: 600 19px/1.5 "Microsoft YaHei", sans-serif; letter-spacing: .08em; }
+#toolbar #reader-settings-close { width: auto; min-width: 62px; min-height: 44px; padding: 8px 12px; border: 1px solid #348ca0; }
+#toolbar #reader-more-tools > .reader-settings-grid { display: grid; grid-template-columns: minmax(0, 1fr); justify-content: stretch; width: 100%; gap: 18px; padding: 18px 0 0; border: 0; }
+#toolbar .reader-settings-section { min-width: 0; }
+#toolbar .reader-settings-section h3 { margin: 0 0 8px; color: #83b4c5; font: 500 12px/1.5 "Microsoft YaHei", sans-serif; letter-spacing: .08em; }
+#toolbar .reader-settings-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+#toolbar .reader-settings-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#toolbar .reader-settings-options > button, #toolbar .reader-settings-options > a {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; min-width: 0; min-height: 46px; margin: 0; padding: 10px 8px;
+  color: #e5f8fb; background: #0c3953; border: 1px solid #28617a;
+  font: 14px/1.5 "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+  text-align: center; text-decoration: none;
+}
+#toolbar .reader-settings-options > button:hover, #toolbar .reader-settings-options > a:hover { background: #15536d; }
+#toolbar .reader-settings-options > button:disabled { color: #87a0ab; background: #0b283b; }
+#toolbar .reader-settings-options > button:focus-visible, #toolbar .reader-settings-options > a:focus-visible,
+#toolbar #reader-settings-close:focus-visible, #toolbar #reader-more-toggle:focus-visible { outline: 2px solid #69e4de; outline-offset: 2px; }
+@media (max-width: 540px) {
+  #toolbar #reader-more-tools { padding: 16px; }
+  #toolbar .reader-settings-three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #toolbar #guide-link, #toolbar #portrait-motion-toggle { grid-column: 1 / -1; }
+}
+
+#app { min-height: 100dvh; }
+#game { height: 100dvh; min-height: 0; }
+#dialogue-wrap {
+  width: min(96%, 1040px);
+  max-width: calc(100% - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+  left: env(safe-area-inset-left, 0px); right: env(safe-area-inset-right, 0px);
+  margin-inline: auto; transform: none;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+}
+/* Keep the same physical frame through shadow/reveal, expression, waiting and
+   choices. Fixed family anchors compensate export padding without rescaling
+   individual poses. Phone, digital and authored fixed shots do not opt in. */
+#game img[data-loading-portrait] { visibility: hidden; }
+#game {
+  --stage-portrait-height: 71%;
+  --stage-portrait-bottom: 130px;
+}
+#game[data-show-type="ar"] #character[data-stage-portrait] {
+  height: calc(var(--stage-portrait-height) * var(--portrait-height-factor));
+  bottom: calc(var(--stage-portrait-bottom) - var(--stage-portrait-height) * var(--portrait-foot-factor));
+  width: auto;
+  max-width: none;
+}
+@media (min-width: 1000px) and (min-height: 650px) {
+  #game { --stage-portrait-height: 92%; --stage-portrait-bottom: 2%; }
+}
+#game #dialogue,
+#game #dialogue:hover,
+#game #dialogue:disabled {
+  /* app.js selects the original scene's log-area PNG as background-image. */
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  outline: 0;
+  opacity: 1;
+  color: #fff;
+}
+#game #dialogue { min-height: 180px; padding: 38px; }
+#game #dialogue::before { content: none; }
+#game #dialogue:focus-visible {
+  outline: 2px solid #78e4e6;
+  outline-offset: 4px;
+}
+#game #speaker, #game[data-scene] #speaker {
+  /* Transparent corners must reveal the stage, never an added rectangle. */
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 0;
+  box-shadow: none;
+  color: #173d54;
+  top: -40px;
+  left: 0;
+  width: 248px;
+  min-width: 0;
+  height: 71px;
+  padding: 32px 23px 10px;
+  text-align: center;
+  font: 600 16px/1.5 "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+  letter-spacing: .06em;
+  text-shadow: none;
+}
+#game #body {
+  font: 500 clamp(17px, 1.6vw, 21px)/1.8 "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+  text-shadow: 0 1px 3px #083557;
+  overflow-wrap: anywhere;
+}
+#game #next-mark { color: #b1f5f1; bottom: 16px; right: 24px; }
+#game #replay-button,
+#game #replay-button:hover {
+  /* Use the source voice icon in place of the port's boxed text button. */
+  top: auto;
+  right: 34px;
+  bottom: 3px;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: transparent;
+  font-size: 0;
+  background: url("assets/ui/e7cf8238c1e032dc.png") center / 26px auto no-repeat;
+  box-shadow: none;
+  outline: 0;
+}
+#game #replay-button:focus-visible {
+  outline: 1px solid #b7f6f1;
+  outline-offset: 2px;
+}
+#game #scene-label { color: #8fbfcf; }
+
+#log-modal, #chapter-dialog {
+  color-scheme: dark;
+  color: #e4f5f7;
+  background:
+    url("assets/ui/7d3edb2122f7b4fd.png") top center / 100% 80px no-repeat,
+    url("assets/ui/efb1a4fefb2d8886.png") bottom center / 100% 80px no-repeat,
+    #061c30;
+  border: 0;
+  box-shadow: 0 12px 70px #000b;
+  padding: clamp(22px, 3vw, 36px);
+}
+#log-modal::backdrop, #chapter-dialog::backdrop { background: #020c1cdd; }
+#log-modal header, #chapter-dialog header { border-color: #29758a; }
+#log-modal h2, #chapter-dialog h2 {
+  color: #e7faff;
+  font-family: "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+  letter-spacing: .08em;
+}
+#log-modal button, #chapter-dialog header button,
+#chapter-dialog .title-actions button {
+  color: #e5f8fb;
+  background: #0c3953;
+  border: 1px solid #348ca0;
+  border-radius: 0;
+}
+#log-modal button:hover, #chapter-dialog button:hover {
+  color: #fff;
+  background-color: #15536d;
+}
+#log-modal button:focus-visible, #chapter-dialog button:focus-visible {
+  outline: 2px solid #69e4de;
+  outline-offset: 2px;
+}
+#log-list { scrollbar-color: #358fa1 #0a283d; }
+#log-list article { color: #e4f4f7; border-color: #285a70; }
+#log-list article[data-current="true"] {
+  border-left-color: #53d0ce;
+  background: #14445b66;
+}
+#log-list small, #log-modal #log-position { color: #81b3c3; }
+#log-list strong { color: #77e1dc; font-family: "Yu Gothic UI", "Microsoft YaHei", sans-serif; }
+#log-list p { font-family: "Yu Gothic UI", "Microsoft YaHei", sans-serif; }
+#log-list .log-voice[aria-pressed="true"] { color: #f2ffff; background: #127b83; }
+#chapter-dialog > p, #chapter-grid.chapter-cards span { color: #95bdc9; }
+#chapter-grid.chapter-cards button {
+  color: #e7f8fb;
+  border-color: #28617a;
+  background: transparent;
+}
+#chapter-grid.chapter-cards button:hover { background: #10425b; }
+#chapter-grid.chapter-cards small { color: #68cbd1; }
+#chapter-grid.chapter-cards strong { color: #e7f8fb; }
+
+@media (max-width: 700px) {
+  #toolbar #reader-more-tools { background: #08283e; }
+  #reader-more-tools > * + * { border-top-color: #277087; }
+  #dialogue-wrap { width: 98%; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+  #game #dialogue { min-height: 160px; padding: 27px 21px 35px; }
+  #game #speaker, #game[data-scene] #speaker {
+    width: 196px;
+    height: 56px;
+    top: -31px;
+    padding: 24px 20px 8px;
+    font-size: 14px;
+  }
+  #game #body { font-size: 16px; line-height: 1.75; }
+  #game #next-mark { right: 18px; bottom: 12px; }
+  #game #replay-button { right: 27px; bottom: 1px; }
+  #log-modal, #chapter-dialog { padding: 22px 18px; }
+}
+@media (max-height: 500px) and (min-aspect-ratio: 6/5) {
+  #game { --stage-portrait-height: calc(100% - 80px); --stage-portrait-bottom: 65px; }
+  #dialogue-wrap { bottom: calc(8px + env(safe-area-inset-bottom, 0px)); }
+  #game #character, #game[data-show-type] #character {
+    height: calc(100% - 80px);
+    bottom: 65px;
+  }
+  #game #dialogue { min-height: 125px; padding: 25px 28px 28px; }
+  #game #body { font-size: 16px; line-height: 1.6; }
+}
+
+/* SGXR-style history: one quiet, full-width reading area per spoken line. */
+#log-modal #log-tools {
+  flex: none; display: flex; gap: 8px 14px; flex-wrap: wrap;
+  align-items: end; padding: 12px 0 8px;
+}
+#log-tools label { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+#log-tools label > span { color: #a2cad4; font-size: 12px; }
+#log-tools .log-search-label { flex: 1; min-width: min(180px, 100%); }
+#log-tools select, #log-tools input {
+  width: 100%; min-width: 0; min-height: 40px; border: 1px solid #31738c;
+  border-radius: 0; background: #092b42; color: #e4f5f7;
+  padding: 8px 10px; font: inherit; font-size: 14px;
+}
+#log-tools input::placeholder { color: #8eafbb; opacity: 1; }
+#log-tools select:focus-visible, #log-tools input:focus-visible {
+  outline: 2px solid #69e4de; outline-offset: 2px;
+}
+#log-modal #log-result-count {
+  flex-basis: 100%; margin: 0; color: #8fb6c4; font-size: 12px; line-height: 1.6;
+}
+#log-modal #log-list { flex: 1 1 auto; padding: 0; }
+#log-list .log-chapter-heading {
+  margin: 0; padding: 15px 16px 9px; color: #90c4d2;
+  font: 500 13px/1.6 "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+  letter-spacing: .06em; border-bottom: 1px solid #285a70;
+}
+#log-modal #log-list article {
+  position: relative; margin: 0; padding: 0;
+  border-left: 3px solid transparent; border-bottom: 1px solid #285a70;
+  background: transparent; color: #e4f4f7;
+}
+#log-modal #log-list article[data-current="true"] { border-left-color: #368b9f; }
+#log-modal #log-list .log-entry-body {
+  display: block; position: relative; width: 100%; min-height: 82px;
+  margin: 0; padding: 15px 18px; border: 0; border-radius: 0;
+  background: transparent; box-shadow: none; color: inherit; opacity: 1;
+  text-align: left; white-space: normal;
+  font: 500 17px/1.8 "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+}
+#log-list .log-entry-body strong { display: block; margin: 0 0 3px; padding-right: 22px; }
+#log-list .log-entry-text { display: block; white-space: pre-wrap; overflow-wrap: anywhere; }
+#log-modal #log-list .log-entry-static, #log-modal #log-list .log-entry-play:disabled { cursor: default; }
+#log-modal #log-list .log-entry-play:not(:disabled):hover { background: #17506a44; }
+#log-modal #log-list .log-entry-play:focus-visible {
+  outline: 2px solid #69e4de; outline-offset: -3px;
+}
+#log-modal #log-list article.playing { border-left-color: #78eeDF; background: #15546b66; }
+#log-list article.playing .log-entry-body::after {
+  content: "♪"; position: absolute; right: 17px; top: 15px;
+  color: #92f1e7; font-size: 17px; pointer-events: none;
+}
+#log-list .log-empty { padding: 18px; color: #9bbac7; font-size: 14px; }
+#log-modal .log-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  border: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+@media (max-width: 500px) {
+  #log-modal #log-list .log-entry-body { padding: 14px 12px; font-size: 16px; }
+  #log-list .log-chapter-heading { padding-left: 12px; }
+  #log-tools #log-filter-label { flex-basis: 100%; }
+}
+/* Reader body copy follows the display language. Names have a separate Yu
+   Gothic-first rule below, with a lighter local supplement for missing glyphs. */
+:root {
+  --karkinos-reader-font: "Microsoft YaHei", "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", "Noto Sans CJK SC", sans-serif;
+}
+:root:lang(ja), #log-list:lang(ja) {
+  --karkinos-reader-font: "Yu Gothic UI", "Yu Gothic", Meiryo, "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", sans-serif;
+}
+#log-list:lang(zh) {
+  --karkinos-reader-font: "Microsoft YaHei", "Microsoft YaHei UI", "PingFang SC", "Noto Sans SC", "Noto Sans CJK SC", sans-serif;
+}
+#game #speaker, #game[data-scene] #speaker,
+#game #body, #game #info-text, #game #end-content, #game #feedback,
+#log-modal #log-list, #log-modal #log-list strong,
+#log-modal #log-list .log-entry-body {
+  font-family: var(--karkinos-reader-font);
+}
+/* Local-only supplement: match a medium CJK face, then a regular system face.
+   Declaring it at the name's 600 weight avoids promoting YaHei to its bold face
+   on Windows machines without Noto. No glyph-by-glyph markup or web font fetch. */
+@font-face {
+  font-family: "Karkinos Name Supplement";
+  src: local("Noto Sans SC Medium"), local("Noto-Sans-SC-Medium"), local("NotoSansSC-Medium"),
+    local("Noto Sans CJK SC Medium"), local("NotoSansCJKsc-Medium"),
+    local("PingFang SC Medium"), local("PingFangSC-Medium"),
+    local("Microsoft YaHei"), local("MicrosoftYaHei"),
+    local("Microsoft YaHei UI"), local("MicrosoftYaHeiUI"),
+    local("Noto Sans SC"), local("NotoSansSC-Regular"),
+    local("Noto Sans CJK SC"), local("NotoSansCJKsc-Regular"),
+    local("PingFang SC"), local("PingFangSC-Regular");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+/* Names retain their Yu Gothic character. Only absent simplified glyphs use
+   the local supplement; Chinese body copy and Japanese names stay unchanged. */
+html:lang(zh) #game #speaker,
+html:lang(zh) #game[data-scene] #speaker,
+#log-modal #log-list:lang(zh) strong {
+  font-family: "Yu Gothic UI", "Yu Gothic", "Karkinos Name Supplement", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  font-synthesis: none;
+}
+/* The image itself supplies the irregular button silhouette and its lettering. */
+#game #branches button.has-art,
+#game #branches button.has-art:hover,
+#game #branches button.has-art:focus-visible,
+#game #branches button.has-art:disabled {
+  background-color: transparent;
+  padding: 0;
+  min-height: 0;
+  height: auto;
+  aspect-ratio: 521 / 251;
+  box-shadow: none;
+}
+#game #branches button.has-art:hover { outline: none; }
+#game #branches button.has-art:focus-visible { outline: 2px solid #69e4de; outline-offset: 3px; }

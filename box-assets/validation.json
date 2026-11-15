@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-04",
+  "environment": "Windows, headless Microsoft Edge via Playwright; desktop 1280x900, mobile viewport 390x844 with touch emulation",
+  "componentTestsPassed": [
+    "35 original mesh controls present",
+    "Empty set rejected",
+    "Wrong selection retained; second click deselects",
+    "Canvas mouse click selects and cancels box1",
+    "Mouse drag changes view without selecting",
+    "Correct set plus extra rejected",
+    "Correct exact set calls onSolved exactly once after 1 second",
+    "Reopen resets selection",
+    "Close and Escape clean up and call onClose",
+    "Keyboard Space selects grid button",
+    "Mobile viewport has no horizontal overflow",
+    "Assistance marks exactly 11 source answer cells",
+    "No browser JavaScript or asset-loading errors in HTTP harness",
+    "Direct file URL loads local marker/texture without server",
+    "Touch canvas tap selects box1",
+    "Touch drag changes view without selecting",
+    "Reopening during pending success cancels stale callback"
+  ],
+  "renderChecks": [
+    "Source meter and both memory GLBs loaded by GLTFLoader with original PBR/UV",
+    "Transparent PNGs visually inspected against source texture atlas",
+    "Meter front digit geometry visibly reads 1.703129 without digit substitution",
+    "Both scene memory GLB SHA256 hashes are identical"
+  ],
+  "limits": [
+    "Touch input was emulated in desktop Edge, not a physical phone test",
+    "No original AR camera, paper, or original-hardware comparison",
+    "Tests cover the isolated box component; full demo integration is validated separately"
+  ]
+}

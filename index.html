@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' data: blob:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'none'; object-src 'none'; base-uri 'none'"
+    />
+    <title>STEINS;GATE 不可侵领域的 Karkinos</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="box.css" />
+    <link rel="stylesheet" href="puzzles.css" />
+    <link rel="stylesheet" href="original-stage.css" />
+    <link rel="stylesheet" href="reader-theme.css" />
+    <link rel="stylesheet" href="native-title.css" />
+    <link rel="stylesheet" href="native-reader.css" />
+    <link rel="stylesheet" href="portrait-motion.css" />
+    <link rel="stylesheet" href="opening-video.css" />
+    <link rel="stylesheet" href="chapter-cards.css" />
+    <link rel="stylesheet" href="launch-settings.css" />
+    <link rel="stylesheet" href="scene-continuity.css" />
+    <link rel="stylesheet" href="portrait-layout.css" />
+  </head>
+  <body>
+    <header id="toolbar" hidden>
+      <button id="reader-more-toggle" type="button" aria-expanded="false" aria-controls="reader-more-tools" aria-haspopup="dialog">设置</button>
+      <section id="reader-more-tools" role="dialog" aria-labelledby="reader-settings-heading" hidden>
+        <div class="reader-settings-header">
+          <h2 id="reader-settings-heading">设置</h2>
+          <button id="reader-settings-close" type="button">关闭</button>
+        </div>
+        <p id="scene-title" class="reader-settings-scene">KARKINOS</p>
+        <div class="reader-settings-grid">
+          <section id="reader-settings-newgame-section" class="reader-settings-section" aria-labelledby="reader-settings-newgame">
+            <h3 id="reader-settings-newgame">新游戏模式</h3>
+            <select id="new-game-mode-select" aria-labelledby="reader-settings-newgame" aria-describedby="new-game-mode-summary">
+              <option value="story">剧情模式</option>
+              <option value="puzzle">解谜模式</option>
+            </select>
+            <p id="new-game-mode-summary"></p>
+          </section>
+          <section class="reader-settings-section" aria-labelledby="reader-settings-reading">
+            <h3 id="reader-settings-reading">阅读</h3>
+            <div class="reader-settings-options">
+              <button id="auto-button" aria-pressed="false">自动</button>
+              <button id="skip-button" aria-pressed="false">快进</button>
+            </div>
+          </section>
+          <section class="reader-settings-section" aria-labelledby="reader-settings-navigation">
+            <h3 id="reader-settings-navigation">导航</h3>
+            <div class="reader-settings-options reader-settings-three">
+              <button id="home-button" title="章节菜单">章节</button>
+              <button id="log-button">回看</button>
+              <a id="guide-link" href="field-guide/index.html" target="_blank" rel="noopener">地图与提示</a>
+            </div>
+          </section>
+          <section class="reader-settings-section" aria-labelledby="reader-settings-preferences">
+            <h3 id="reader-settings-preferences">偏好</h3>
+            <div class="reader-settings-options reader-settings-three">
+              <button id="language-button">简中</button>
+              <button id="sound-button" aria-pressed="false">声音 开</button>
+              <button id="portrait-motion-toggle" type="button" aria-pressed="false">视差 关</button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </header>
+    <main id="app">
+      <section id="home">
+        <div id="title-screen">
+          <figure class="cover">
+            <img class="title-key-visual" src="assets/cover.jpg" width="1143" height="600" alt="STEINS;GATE 不可侵领域的 Karkinos 原版主视觉" />
+          </figure>
+          <div class="title-copy">
+            <div class="title-actions">
+              <button id="resume-button" hidden>继续游戏</button>
+              <button id="new-game">新游戏</button>
+            </div>
+          </div>
+        </div>
+        <section id="mode-panel" hidden aria-labelledby="mode-title">
+          <img class="mode-logo" src="assets/title-logo.png" width="1031" height="327" alt="STEINS;GATE 不可侵領域のカルキノス" />
+          <h2 id="mode-title">选择模式</h2>
+          <select id="play-mode-select" aria-labelledby="mode-title">
+            <option value="story" selected>剧情模式</option>
+            <option value="puzzle">解谜模式</option>
+          </select>
+          <p id="mode-summary" aria-live="polite"></p>
+          <div class="title-actions">
+            <button id="preview-opening" type="button" hidden>预览片头</button>
+          </div>
+          <div id="preview-grid" class="chapter-cards" hidden></div>
+        </section>
+      </section>
+      <section id="game" hidden data-scene="" data-record="" data-mode="">
+        <div id="scene-backdrop"></div>
+        <div id="scan-grid"></div>
+        <div id="scene-label"></div>
+        <img id="character" alt="" />
+        <img id="stage-art" alt="原版场景画面" hidden />
+        <video id="scene-video" playsinline preload="metadata" hidden></video>
+        <div id="wipe">
+          <img id="wipe-frame" alt="" /><img id="wipe-character" alt="" />
+        </div>
+        <div id="phone">
+          <img id="phone-frame" alt="" />
+          <div id="phone-screen">
+            <img id="phone-character" alt="" />
+            <video id="appear-video" playsinline preload="metadata"></video>
+          </div>
+        </div>
+        <div id="puzzles" hidden></div>
+        <button id="memory-object" hidden aria-label="读取记忆数据">
+          <img
+            class="memory-core"
+            src="box-assets/memory-data-1.png"
+            alt="原版发光记忆物件"
+          /><span>读取记忆数据</span>
+        </button>
+        <div id="meter" hidden>
+          <img src="box-assets/meter.png" alt="原版分歧仪与数列" />
+        </div>
+        <div id="dialogue-wrap">
+          <button id="dialogue" aria-label="推进对话">
+            <span id="speaker"></span><span id="body"></span
+            ><span id="next-mark">▼</span></button
+          ><button id="replay-button" title="重播本句语音" hidden>
+            ↻ 语音
+          </button>
+        </div>
+        <div id="branches" hidden>
+          <button id="branch-yes">是</button
+          ><button id="branch-no">否</button>
+        </div>
+        <button id="puzzle-launch" hidden>展开互动</button>
+        <button id="action-button" hidden>
+          <img id="action-image" alt="" hidden /><span id="action-label"
+            >操作</span
+          >
+        </button>
+        <section id="info-panel" hidden>
+          <aside id="info-context" class="arrival-context" hidden><p></p><a target="_blank" rel="noopener"></a></aside>
+          <div id="info-text"></div>
+          <button id="info-close">确认</button>
+        </section>
+        <form id="answer-form" hidden>
+          <aside id="answer-context" class="arrival-context" hidden><p></p><a target="_blank" rel="noopener"></a></aside>
+          <img id="answer-message" alt="" /><label for="answer-input"
+            >输入日文口令</label
+          >
+          <div>
+            <input
+              id="answer-input"
+              maxlength="6"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="输入日文口令"
+            /><button id="answer-submit" type="submit">决定</button>
+          </div>
+          <details id="demo-help">
+            <summary>提示</summary>
+            <button id="show-password" type="button">显示答案</button>
+            <p id="password-reveal" hidden></p>
+          </details>
+          <button id="puzzle-tools" type="button" hidden>操作记忆碎片</button>
+        </form>
+        <div id="feedback" role="status" aria-live="polite" hidden></div>
+        <div id="wrong-poster" hidden>
+          <img id="key-visual" alt="原版宣传图" /><button id="poster-close">
+            返回输入
+          </button>
+        </div>
+        <section id="end-panel" hidden>
+          <div id="end-content"></div>
+          <a
+            id="end-guide"
+            href="field-guide/index.html#map"
+            target="_blank"
+            rel="noopener"
+            hidden
+            >地图与提示</a
+          >
+          <button id="end-next" hidden>继续下一步</button>
+          <button id="end-home">返回标题</button
+          ><button id="end-restart">重新观测本场</button>
+        </section>
+        <div id="box-host" hidden></div>
+        <div id="puzzle-host" hidden></div>
+        <button id="reopen-box" hidden>重新打开盒子</button>
+      </section>
+    </main>
+    <dialog id="new-game-confirm" aria-labelledby="new-game-confirm-heading" aria-describedby="new-game-confirm-text">
+      <h2 id="new-game-confirm-heading">开始新游戏？</h2>
+      <p id="new-game-confirm-text"></p>
+      <div class="title-actions">
+        <button id="new-game-replace" type="button">开始新游戏</button>
+        <button id="new-game-cancel" type="button">取消</button>
+      </div>
+    </dialog>
+    <dialog id="chapter-dialog" aria-labelledby="chapter-heading">
+      <header><h2 id="chapter-heading">章节</h2><button id="chapter-close">返回游戏</button></header>
+      <p>回看不会覆盖主线进度。</p>
+      <div id="chapter-grid" class="chapter-cards"></div>
+      <div class="title-actions">
+        <button id="chapter-resume" hidden>继续主线</button>
+        <button id="chapter-home">返回标题</button>
+      </div>
+    </dialog>
+    <dialog id="log-modal">
+      <header>
+        <h2>观测记录</h2>
+        <button id="log-close">关闭</button>
+      </header>
+      <div id="log-list"></div>
+    </dialog>
+    <dialog id="image-modal">
+      <button id="image-close">关闭谜面</button
+      ><img id="large-puzzle" alt="原版谜面" />
+    </dialog>
+    <script src="language.js"></script>
+    <script src="demo-data.js"></script>
+    <script src="zh-story.js"></script>
+    <script src="box.js"></script>
+    <script src="puzzles.js"></script>
+    <script src="full-flow.js"></script>
+    <script src="original-stage.js"></script>
+    <script src="music-cues.js"></script>
+    <script src="engine.js"></script>
+    <script src="reader-controls.js"></script>
+    <script src="opening-video.js"></script>
+    <script src="chapter-cards.js"></script>
+    <script src="portrait-layout.js"></script>
+    <script src="app.js"></script>
+    <script src="portrait-motion.js"></script>
+  </body>
+</html>

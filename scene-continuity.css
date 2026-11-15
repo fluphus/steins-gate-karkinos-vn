@@ -1,0 +1,9 @@
+/* Necessary puzzle directions remain readable at the next user-paced input. */
+#game .arrival-context {
+  margin: 0 0 18px; padding: 0 0 14px; border-bottom: 1px solid #31738c;
+  color: #c9e8ed; font: 14px/1.8 var(--karkinos-reader-font);
+}
+#game .arrival-context p { margin: 0 0 8px; white-space: normal; }
+#game .arrival-context a { color: #8bdde9; text-decoration: underline; text-underline-offset: 3px; }
+#game .arrival-context a:focus-visible { outline: 2px solid #69e4de; outline-offset: 3px; }
+#answer-form { max-height: calc(100dvh - 32px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); overflow-y: auto; }

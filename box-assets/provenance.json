@@ -1,0 +1,36 @@
+{
+  "scene": "fryi3j5",
+  "models": [
+    {
+      "path": "uploads/ar_asset/upload_file/439836/fbf136ef75.glb",
+      "sha256": "7adcea5b702f722c6bf4dfc7b7f5e1cd62d41a092a511fb65322670f35d93e0c"
+    },
+    {
+      "path": "uploads/ar_asset/upload_file/441782/231fc6d4eb.glb",
+      "sha256": "c6d8a30b18a3c32caf7ea34993e519c93fcc6001ae4fa13b899676814c70e90d"
+    }
+  ],
+  "extraction": "Read GLB JSON/BIN only; decoded source POSITION and indices, applied node scale/translation and scene frame/box relative transforms. Source files were not executed or modified.",
+  "geometry": "35 planar selectable meshes, not volumetric cubes. Each mesh retains its original node name and source triangles.",
+  "correctSet": [
+    "box1",
+    "box11",
+    "box18",
+    "box23",
+    "box24",
+    "box25",
+    "box26",
+    "box27",
+    "box32",
+    "box39",
+    "box49"
+  ],
+  "controller": "research/cdn_recon_round5/scene_scripts/fryi3j5/inline_script_3.js",
+  "differences": [
+    "Camera/marker tracking replaced by drag rotation and an offline light background.",
+    "Canvas uses orthographic projection; source glTF PBR/emissive rendering is approximated.",
+    "Number labels, keyboard grid, reset view and progressively revealed assistance are restoration additions.",
+    "Correct answer callback after 1 second; host supplies the remaining original transition.",
+    "Original paper marker contains an empty white puzzle region; the filled paper result is not available in this component. Hints explicitly disclose the source-derived answer."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "sourceModels": [
+    {
+      "path": "uploads/ar_asset/upload_file/439835/02028a7b29.glb",
+      "sha256": "b38f788a7b0f0576089360bd89555ff4ea1fb2de6100b674ac0d493a2d5797a4"
+    },
+    {
+      "path": "uploads/ar_asset/upload_file/437237/b58d7a45e9.glb",
+      "sha256": "c8958f370745bde69cd7d5be0b10fce3298fd93ee56ed52a1a293fea4a2fb4b6"
+    },
+    {
+      "path": "uploads/ar_asset/upload_file/439211/1a55fb93eb.glb",
+      "sha256": "c8958f370745bde69cd7d5be0b10fce3298fd93ee56ed52a1a293fea4a2fb4b6"
+    }
+  ],
+  "renderer": "Local Three.js GLTFLoader/WebGLRenderer in Edge headless; source GLB mesh, UV and PBR materials loaded without modification. PNG alpha rendering, orthographic front camera for meter; slight oblique camera for memory objects. Transparent border trimmed, 16px padding.",
+  "presentationLighting": "RoomEnvironment PMREM, hemisphere and directional lights; ACES filmic tone mapping exposure 1.5. Camera, exposure and studio lighting are presentation choices, not a claim of matching original AR lighting.",
+  "meterReadout": "Original mesh/UV/material render visibly reads 1.703129. No digits were typed, replaced, painted, or synthesized.",
+  "memoryNotes": "Both recovered scene-specific memory GLBs are rendered separately; original bright nested pyramid geometry and materials preserved.",
+  "outputs": [
+    "meter.png",
+    "memory-data-1.png",
+    "memory-data-2.png"
+  ]
+}

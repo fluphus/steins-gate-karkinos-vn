@@ -1,0 +1,14 @@
+/* Explicit source-aspect geometry replaces layout-dependent contain boxes. */
+#game[data-scene] #character[data-reader-camera] {
+  left: var(--reader-camera-left); top: var(--reader-camera-top);
+  width: var(--reader-camera-width); height: var(--reader-camera-height);
+  bottom: auto; max-width: none; max-height: none;
+  transform: none; object-fit: contain;
+}
+#game[data-scene] #character[data-reader-camera="half"] {
+  clip-path: inset(0 0 var(--reader-camera-crop, 0px) 0);
+}
+/* Close-up planes extend below the viewport. Clip without creating the hidden
+   scroll container that native focus/scroll anchoring could move between lines. */
+#game { overflow: clip; overflow-anchor: none; }
+#game #character { overflow-anchor: none; }

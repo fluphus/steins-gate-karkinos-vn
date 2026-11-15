@@ -1,0 +1,190 @@
+/* Karkinos title/menu skin. Original main visual is always displayed whole. */
+#home {
+  --title-navy: #010920;
+  --title-blue: #2098ed;
+  --title-orange: #cc7115;
+  color-scheme: dark;
+  max-width: none;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  color: #f3f7ff;
+  background: #010920 url("assets/native-title/pc-bg.jpg") center / cover fixed;
+  font-family: "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+}
+#home button:focus-visible, #home select:focus-visible {
+  outline: 2px solid #ffb361;
+  outline-offset: 4px;
+}
+#title-screen {
+  min-height: 100dvh;
+  width: min(1207px, 100%);
+  margin: auto;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  overflow: visible;
+}
+#title-screen::before { display: none; }
+#title-screen .cover {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  inset: auto;
+  width: min(100%, calc((100dvh - 160px) * 1.905));
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  align-self: center;
+  overflow: visible;
+  border: 1px solid #2063a8;
+  background: #010920;
+  box-shadow: 0 0 65px #0457b32b;
+}
+#title-screen .cover .title-key-visual {
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 1143 / 600;
+  object-fit: contain;
+  transform: none;
+  opacity: 1;
+  mask-image: none;
+}
+#title-screen .title-copy {
+  width: min(100%, calc((100dvh - 160px) * 1.905));
+  align-self: center;
+  margin: 0;
+  padding: 18px 24px;
+  border: 1px solid #2063a8;
+  border-top: 0;
+  background: #03132ee6;
+}
+#home .edition {
+  margin: 0;
+  color: #8bacd7;
+  font: 11px/1.6 Consolas, monospace;
+  letter-spacing: .13em;
+}
+#home .edition span { color: #cc7115; padding: 0 .4em; }
+#title-screen .title-actions { display: flex; justify-content: center; gap: 12px; width: 100%; max-width: none; }
+#title-screen .title-actions button,
+#title-screen #resume-button:not([hidden]) + #new-game {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 1 240px;
+  width: auto;
+  min-width: 0;
+  min-height: 52px;
+  padding: 14px 18px;
+  border: 1px solid #3a699b;
+  color: #eaf3ff;
+  background: #061a3a;
+  font: 500 17px/1.5 "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+  letter-spacing: .08em;
+  justify-content: center;
+  text-align: center;
+}
+#title-screen .title-actions button::before {
+  content: "";
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  background: url("assets/native-title/nav-deco.png") center / contain no-repeat;
+}
+#title-screen .title-actions button span { margin-left: auto; color: #9fbee6; font: 10px/1.4 Consolas, monospace; letter-spacing: .08em; }
+#title-screen #resume-button, #title-screen #resume-button[hidden] + #new-game {
+  color: #fff;
+  border-color: #cc7115;
+  background: #99500f;
+}
+#title-screen #resume-button span, #title-screen #resume-button[hidden] + #new-game span { color: #ffdfbc; }
+#title-screen .title-actions button:hover { background: #113b6d; box-shadow: inset 3px 0 #5dbaff; }
+#title-screen #resume-button:hover, #title-screen #resume-button[hidden] + #new-game:hover { background: #b56419; box-shadow: none; }
+
+#mode-panel, #mode-panel:has(#preview-grid[hidden]) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  isolation: isolate;
+  overflow: visible;
+  width: min(820px, calc(100% - 48px));
+  min-height: 100dvh;
+  margin: auto;
+  padding: 64px clamp(24px, 5vw, 72px);
+  border: 0;
+  background: #010b26b8;
+}
+#mode-panel::before, #mode-panel:has(#preview-grid[hidden])::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin: 0 0 24px;
+  background: url("assets/native-title/pc-bg__scale.png") center / auto 2px repeat-x;
+  border: 0;
+}
+#mode-panel:has(#preview-grid[hidden])::after { display: none; }
+#mode-panel .mode-logo { display: block; width: 430px; max-width: 100%; height: auto; margin: 0 0 20px -9%; }
+#mode-panel h2 { color: #f4f8ff; font: 500 clamp(25px, 3.5vw, 38px)/1.45 "Yu Gothic UI", "Microsoft YaHei", sans-serif; letter-spacing: .1em; margin: 18px 0 32px; }
+#mode-panel label { display: block; margin-bottom: 8px; color: #afc7e5; font: 13px/1.5 "Microsoft YaHei", sans-serif; }
+#mode-panel .mode-select-label { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
+#mode-panel #play-mode-select {
+  width: min(360px, 100%);
+  min-width: 0;
+  min-height: 52px;
+  padding: 12px 16px;
+  color: #f0f6ff;
+  background: #071c3e;
+  border: 1px solid #47729f;
+  border-bottom: 2px solid #cc7115;
+  border-radius: 0;
+  font: 16px/1.5 "Microsoft YaHei", sans-serif;
+}
+#mode-panel #mode-summary { max-width: 580px; margin: 20px 0 28px; color: #bbcee6; font: 14px/1.95 "Microsoft YaHei", sans-serif; }
+#mode-panel .title-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+#mode-panel .title-actions button { min-height: 50px; padding: 11px 28px; border: 1px solid #47729f; background: #071c3e; color: #eaf3ff; font: 16px/1.5 "Microsoft YaHei", sans-serif; letter-spacing: .08em; }
+#mode-panel .title-actions button:hover { background: #143a68; }
+#mode-panel:has(#preview-grid:not([hidden])) { width: min(1220px, calc(100% - 48px)); justify-content: flex-start; padding-top: 36px; }
+#mode-panel:has(#preview-grid:not([hidden])) .mode-logo { width: 340px; margin-bottom: 12px; margin-left: -7%; }
+#mode-panel:has(#preview-grid:not([hidden])) h2 { margin-bottom: 22px; }
+#mode-panel #preview-grid { width: 100%; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; }
+#mode-panel #preview-grid button { min-height: 80px; padding: 16px 18px; background: #071a36d9; border: 1px solid #315580; border-top: 2px solid #387fc6; }
+#mode-panel #preview-grid button:hover { background: #103967; border-color: #64b8ff; }
+#mode-panel #preview-grid strong { color: #eaf3ff; font: 500 18px/1.5 "Microsoft YaHei", sans-serif; margin: 0; }
+@media (max-width: 860px) {
+  #title-screen { padding: 24px; }
+  #mode-panel #preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  #title-screen {
+    justify-content: center;
+    min-height: 100dvh;
+    padding: 24px 14px 56px;
+  }
+  #title-screen .cover { flex: 0 0 auto; width: 100%; max-width: none; height: auto; min-height: 0; }
+  #title-screen .title-copy { width: 100%; max-width: none; margin: 0; padding: 16px; }
+  #title-screen .title-actions { gap: 10px; }
+  #title-screen .title-actions button { min-height: 52px; padding: 12px 8px; font-size: 16px; gap: 8px; }
+  #mode-panel, #mode-panel:has(#preview-grid[hidden]), #mode-panel:has(#preview-grid:not([hidden])) { width: 100%; padding: 32px 24px; min-height: 100dvh; }
+  #mode-panel .mode-logo { width: 360px; max-width: 100%; margin: 0 0 12px -10%; }
+  #mode-panel h2 { font-size: 26px; margin: 16px 0 26px; }
+  #mode-panel #mode-summary { font-size: 14px; }
+  #mode-panel #preview-grid { grid-template-columns: 1fr; }
+  #mode-panel #preview-grid button { min-height: 72px; }
+  #mode-panel #preview-grid strong { font-size: 18px; }
+}
+@media (max-height: 500px) and (min-width: 641px) {
+  #title-screen { padding-block: 24px; }
+  #title-screen .title-copy { padding-block: 12px; }
+  #mode-panel, #mode-panel:has(#preview-grid[hidden]) { padding-block: 28px; }
+  #mode-panel .mode-logo { width: 200px; margin-bottom: 14px; }
+}

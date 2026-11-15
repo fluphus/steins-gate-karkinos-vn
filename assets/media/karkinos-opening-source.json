@@ -1,0 +1,34 @@
+{
+  "videoId": "vzx0JoZ-ydM",
+  "title": "【PARCO GAMES】没入体験型謎解き『STEINS;GATE 不可侵領域のカルキノス』 始まる！",
+  "lengthSeconds": "22",
+  "channelId": "UCq8l0p73JNlHWOtNwJ6rxig",
+  "author": "PARCO_official",
+  "shortDescription": "世界的人気コンテンツ「STEINS;GATE」の世界を体験できる没入体験型謎解きゲーム「STEINS;GATE 不可侵領域のカルキノス」が期間限定で登場！\n今だけしか体験できない、あなたが主人公の「STEINS;GATE」が始まる！ ！\n期間：2024.11.1ー2025.4.30\n特設サイト：https://sg-karkinos.jp/\nONLINE PARCOにて謎解きキット販売：https://online.parco.jp/shop/e/e12912601/",
+  "source_url": "https://www.youtube.com/watch?v=vzx0JoZ-ydM",
+  "format_ids": {
+    "video": "137",
+    "audio": "140"
+  },
+  "video": "1920x1080 H.264 30 fps",
+  "audio": "Japanese AAC stereo 44100 Hz",
+  "remux": "FFmpeg stream copy; full audio/video decode verified",
+  "compressed_stream_sha256": {
+    "v": "cf303365df4433ba4825062f02031cbb8e8f807258cf942c210190c0bf1188bc",
+    "a": "2e28c7c72bedaeba3a7316d8d1b1615019bbc9b6d50ddecdfba72880a4108205"
+  },
+  "files": {
+    "PARCO-Karkinos-PV.f137.mp4": {
+      "bytes": 9655899,
+      "sha256": "920f78e592dde70d2ff8c97d53475d18ece879eec1f139fb717f9a6e4f9f9290"
+    },
+    "PARCO-Karkinos-PV.f140.m4a": {
+      "bytes": 358169,
+      "sha256": "a3d4c1e329078d7f428ee8f2975507dba70ac095a979ebcd518b66a5c44d4264"
+    },
+    "PARCO-Karkinos-PV-1080p.mp4": {
+      "bytes": 10022276,
+      "sha256": "8a5dc7d65b886332d2bc90a8d58637e9a84c7b4785e82309f6620dc8af66c533"
+    }
+  }
+}

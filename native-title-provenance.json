@@ -1,0 +1,41 @@
+{
+  "native_palette": {
+    "navy": "#010920",
+    "blue": "#0c3d86",
+    "orange": "#cc7115"
+  },
+  "reference": "Archived official top.css and common official webpage assets. No SGXR assets or generated artwork.",
+  "files": [
+    {
+      "path": "assets/native-title/pc-bg.jpg",
+      "source_path": "output/imports/34f16ac9e5e5c5a9/objects/sg-karkinos.jp/assets/img/common/pc-bg.jpg",
+      "sha256": "0b7ce371da016a67a6e1e02292f054134278a544c371c8bfa92d04374df06035",
+      "treatment": "Original bytes, no crop or recolor. Background and scale only decorate the page; no character artwork is cut."
+    },
+    {
+      "path": "assets/native-title/nav-deco.png",
+      "source_path": "output/imports/34f16ac9e5e5c5a9/objects/sg-karkinos.jp/assets/img/common/nav-deco.png",
+      "sha256": "852fe28aa0e2fb90cc928020a495bded51620fead2458b38703dd6b1c0590632",
+      "treatment": "Original bytes, no crop or recolor. Background and scale only decorate the page; no character artwork is cut."
+    },
+    {
+      "path": "assets/native-title/pc-bg__scale.png",
+      "source_path": "output/imports/34f16ac9e5e5c5a9/objects/sg-karkinos.jp/assets/img/common/pc-bg__scale.png",
+      "sha256": "62a54b57145e61e9c91fa250f0907d4df6f5ac51528e9138481679c2b0f5ce88",
+      "treatment": "Original bytes, no crop or recolor. Background and scale only decorate the page; no character artwork is cut."
+    },
+    {
+      "path": "assets/cover.jpg",
+      "treatment": "Existing original full 1143 × 600 main visual; displayed as an img at its original aspect ratio with object-fit:contain, no mask, cropping, overlaid text or replacement logo.",
+      "source_path": "research/cdn_recon_round5/full_scene_assets/uploads/ar_content/ogp_image/145056/577655051d.jpg",
+      "sha256": "72fbcd2e6091cced1df84abca54b282288fe4c67cde1ace6b1cf829a650398d1",
+      "source_role": "Official scene Open Graph main visual; matches the archived source bytes."
+    },
+    {
+      "path": "assets/title-logo.png",
+      "treatment": "Existing original transparent logo; displayed at its original aspect ratio, no crop or recolor.",
+      "source_path": "output/imports/34f16ac9e5e5c5a9/objects/sg-karkinos.jp/2-1ex1/assets/img/logo.png",
+      "sha256": "b5b12c868b5840146f0fce507eeb86199d5873e3fcabd93aff111a6011a5baec"
+    }
+  ]
+}
