@@ -232,6 +232,7 @@
     document.title = tr("STEINS;GATE 不可侵领域的 Karkinos", "STEINS;GATE 不可侵領域のカルキノス");
     const labels = {
       "#resume-button": ["继续游戏", "つづきから"], "#new-game": ["新游戏", "はじめから"],
+      "#download-offline": ["下载离线版", "オフライン版をダウンロード"],
       "#mode-title": ["选择模式", "モード選択"],
       '#play-mode-select option[value="story"]': ["剧情模式", "ストーリーモード"],
       '#play-mode-select option[value="puzzle"]': ["解谜模式", "謎解きモード"],

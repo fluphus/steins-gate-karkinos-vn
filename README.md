@@ -2,6 +2,9 @@
 
 三章 Web 移植版。首页点「新游戏」进入剧情模式。要自己解谜，可在新游戏开始前从设置选择解谜模式。浏览器会保存当前进度，回到同一站点可点「继续游戏」。
 
+- [在线游玩 / ブラウザーで遊ぶ](https://fluphus.github.io/steins-gate-karkinos-vn/)
+- [下载 Windows 离线版 / Windows オフライン版](https://github.com/fluphus/steins-gate-karkinos-vn/releases/latest/download/karkinos-offline.zip)
+
 ## 部署到 GitHub Pages
 
 1. 解压本包，在本地 Git 仓库中将文件放到发布分支的根目录。根目录应直接包含 `index.html`、`.nojekyll` 和 `assets/`。

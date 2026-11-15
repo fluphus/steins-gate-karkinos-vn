@@ -12,11 +12,12 @@
   background: #010920 url("assets/native-title/pc-bg.jpg") center / cover fixed;
   font-family: "Yu Gothic UI", "Microsoft YaHei", sans-serif;
 }
-#home button:focus-visible, #home select:focus-visible {
+#home button:focus-visible, #home select:focus-visible, #home a:focus-visible {
   outline: 2px solid #ffb361;
   outline-offset: 4px;
 }
 #title-screen {
+  --title-menu-space: 198px;
   min-height: 100dvh;
   width: min(1207px, 100%);
   margin: auto;
@@ -34,7 +35,7 @@
   grid-row: 1;
   position: relative;
   inset: auto;
-  width: min(100%, calc((100dvh - 160px) * 1.905));
+  width: min(100%, calc((100dvh - var(--title-menu-space)) * 1.905));
   height: auto;
   min-height: 0;
   margin: 0;
@@ -57,7 +58,7 @@
   mask-image: none;
 }
 #title-screen .title-copy {
-  width: min(100%, calc((100dvh - 160px) * 1.905));
+  width: min(100%, calc((100dvh - var(--title-menu-space)) * 1.905));
   align-self: center;
   margin: 0;
   padding: 18px 24px;
@@ -107,6 +108,26 @@
 #title-screen #resume-button span, #title-screen #resume-button[hidden] + #new-game span { color: #ffdfbc; }
 #title-screen .title-actions button:hover { background: #113b6d; box-shadow: inset 3px 0 #5dbaff; }
 #title-screen #resume-button:hover, #title-screen #resume-button[hidden] + #new-game:hover { background: #b56419; box-shadow: none; }
+#title-screen .home-downloads {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 12px;
+  margin-top: 6px;
+}
+#title-screen #download-offline {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  color: #c8dff8;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: .23em;
+  white-space: nowrap;
+}
+#title-screen #download-offline:hover { color: #fff; }
+#title-screen .download-size { color: #a0b8d5; font-size: 11px; white-space: nowrap; }
 
 #mode-panel, #mode-panel:has(#preview-grid[hidden]) {
   position: relative;
@@ -182,9 +203,16 @@
   #mode-panel #preview-grid button { min-height: 72px; }
   #mode-panel #preview-grid strong { font-size: 18px; }
 }
-@media (max-height: 500px) and (min-width: 641px) {
-  #title-screen { padding-block: 24px; }
+@media (max-height: 500px) and (orientation: landscape) {
+  #title-screen { --title-menu-space: 152px; padding-block: 14px; }
+  #title-screen .cover, #title-screen .title-copy { width: min(100%, calc((100dvh - var(--title-menu-space)) * 1.905)); }
   #title-screen .title-copy { padding-block: 12px; }
+  #title-screen .title-actions { flex-wrap: nowrap; }
+  #title-screen .title-actions button,
+  #title-screen #resume-button:not([hidden]) + #new-game { min-height: 46px; padding-block: 9px; }
+  #title-screen .home-downloads { margin-top: 2px; }
+}
+@media (max-height: 500px) and (min-width: 641px) {
   #mode-panel, #mode-panel:has(#preview-grid[hidden]) { padding-block: 28px; }
   #mode-panel .mode-logo { width: 200px; margin-bottom: 14px; }
 }
